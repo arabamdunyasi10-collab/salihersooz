@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    background-color: #1f1f1f;
+    border-bottom: 2px solid #333;
+}
+
+header h1 {
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+
+.video-grid {
+    display: grid;
+    /* Mobilde tek kolon, PC'de sığdığı kadar kolon */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.video-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-5px);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 oranı bozmamak için */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    padding: 15px;
+}
+
+.video-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.like-btn {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.like-btn:hover {
+    background-color: #ff0f1f;
+}
+
+.like-btn:active {
+    transform: scale(0.95); /* Tıklama hissiyatı */
+}
+
+footer {
+    margin-top: auto;
+    padding: 20px;
+    color: #888;
+}
+/* Kartların hepsini aynı hizaya sokmak için flex yapısı ekledik */
+.video-card {
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Grid içindeki bütün kartların boyunu eşitler */
+}
+
+/* Videoların oranını belirliyoruz */
+.video-wrapper {
+    position: relative;
+    /* Şuan 16:9 yatay orana ayarlı. Eğer videolarının çoğu TikTok/Shorts gibi dikeyse burayı 177.77% yapabilirsin */
+    padding-bottom: 56.25%; 
+    height: 0;
+    background-color: #000; 
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+
+.video-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    justify-content: space-between;
+}
+/* Oynat Butonu Tasarımı */
+.play-btn {
+    background-color: #ff0000; /* Klasik video kırmızısı */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* İkon ile yazı arasına boşluk */
+}
+
+.play-btn:hover {
+    background-color: #cc0000; /* Üzerine gelince biraz koyulaşır */
+}
+
+.play-btn:active {
+    transform: scale(0.97); /* Tıklama hissiyatı */
+}
+/* Sağ Alt Köşedeki Tam Ekran Butonu */
+.fullscreen-btn {
+    position: absolute;
+    bottom: 10px; /* Alttan boşluk */
+    right: 10px;  /* Sağdan boşluk */
+    background-color: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah arka plan */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 10; /* Videonun altında kalmasın diye öne çıkarıyoruz */
+    transition: background 0.2s, transform 0.2s;
+}
+
+.fullscreen-btn:hover {
+    background-color: #ff0000; /* Üstüne gelince bizim kırmızı olsun */
+    transform: scale(1.1); /* Hafif büyüsün */
+}
